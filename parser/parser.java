@@ -1,8 +1,8 @@
 package parser;
 
 import java.util.ArrayList;
-
 public class Parser{
+    public static final char[] BASIC_OPERATORS= {'%', '^', '/', '*', '+', '-'};
     private static final String[] FUNCTIONS = 
     {
         "nul",
@@ -47,7 +47,7 @@ public class Parser{
     ArrayList<Integer> operands = new ArrayList<>();
     ArrayList<Character> operatorNames = new ArrayList<>();
     ArrayList<StringBuffer> operandNames = new ArrayList<>();
-    void details(){
+    public void details(){
         System.out.println(" expression: " + expression);
         System.out.println(" Content:");
         System.out.println(" numbers = " + contentArray[0]);
@@ -151,11 +151,7 @@ public class Parser{
         }
         return indices;
     }
-    void basicParse(String expression) throws Exception{
-        ArrayList<Integer> operators = new ArrayList<>();
-        ArrayList<Integer> operands = new ArrayList<>();
-        ArrayList<Character> operatorNames = new ArrayList<>();
-        ArrayList<StringBuffer> operandNames = new ArrayList<>();
+    public static void parseTo(String expression, ArrayList<Integer> operators, ArrayList<Integer> operands, ArrayList<Character> operatorNames, ArrayList<StringBuffer> operandNames) throws Exception{
         int length = expression.length();
         for(int i = 0; i < length; i++){
             char nowChar = expression.charAt(i);
@@ -178,6 +174,14 @@ public class Parser{
                 int pointCounts = 0;
                 boolean isNegative = false;
                 int negCounts = 0;
+                /*
+                if(i == length - 1){
+                    if(expression.charAt(i - 1) == '.')continue;
+                }
+                */
+                if(nowChar == '.'){
+                    if(expression.charAt(i - 1) == '0')continue;
+                }
                 operands.add(i);
                 StringBuffer numberString = new StringBuffer();
                 for(int j = i; j < length; j++){
@@ -213,6 +217,10 @@ public class Parser{
                         } 
                     }
                     numberString.append(nowCharj);
+                    if(j == length - 1){
+                        i = j;
+                        break;
+                    }
                 }
                 operandNames.add(numberString);
             }
@@ -225,12 +233,18 @@ public class Parser{
                 nowChar == '^'
             )
             {
-                if(i == length - 1)throw new Exception("Syntax Error");
+                if(i == length - 1 && nowChar != '%')throw new Exception("Syntax Error");
+                else if(i == length - 1){
+                    operators.add(i);
+                    operatorNames.add(nowChar);
+                    continue;
+                }
                 char nextChar = expression.charAt(i + 1);
                 if
                 (
                     i == 0
                     ||
+                    nowChar != '%' &&
                     nextChar != '0' && 
                     nextChar != '1' && 
                     nextChar != '2' &&
@@ -254,39 +268,66 @@ public class Parser{
             }
             
         }
-        // /* Details
-            System.out.println(" Expression: " + expression);
-            System.out.println(" Number of operators: " + operators.size());
-            System.out.println(" Number of operands: " + operands.size());
-            System.out.println(" Operators: ");
-            for(int i = 0; i < operators.size(); i++){
-                System.out.println(" " + (i + 1) + ". " + operatorNames.get(i) + " : " + operators.get(i));
-            }
-            System.out.println(" Opearands: ");
-            for(int i = 0; i < operands.size(); i++){
-                System.out.println(" " + (i + 1) + ". " + operandNames.get(i) + " : " + operands.get(i));
-            }
+        /* Details
+        System.out.println(" Expression: " + expression);
+        System.out.println(" Number of operators: " + operators.size());
+        System.out.println(" Number of operands: " + operands.size());
+        System.out.println(" Operators: ");
+        for(int i = 0; i < operators.size(); i++){
+            System.out.println(" " + (i + 1) + ". " + operatorNames.get(i) + " : " + operators.get(i));
+        }
+        System.out.println(" Opearands: ");
+        for(int i = 0; i < operands.size(); i++){
+            System.out.println(" " + (i + 1) + ". " + operandNames.get(i) + " : " + operands.get(i));
+        }
         // */
-        this.operators = operators;
-        this.operands = operands;
-        this.operandNames = operandNames;
-        this.operatorNames = operatorNames;
     }
-    void basicParse() throws Exception{
+    public void basicParse(String expression) throws Exception{
+        parseTo(expression, operators, operands, operatorNames, operandNames);
+    }
+    public void basicParse() throws Exception{
         basicParse(this.expression);
     }
-    Parser(String expression){
+    public ArrayList<Integer> getOperators(){
+        return operators;
+    }
+    public ArrayList<Integer> getOperands(){
+        return operands;
+    }
+    public ArrayList<Character> getOperatorNames(){
+        return operatorNames;
+    }
+    public ArrayList<StringBuffer> getOperandNames(){
+        return operandNames;
+    }
+    public String getExpression(){
+        return expression;
+    }
+    public Parser(String expression){
         this.expression = expression;
         contentArray = analyzeExpression(expression);
         funcArray = getFunctions(expression);
         funcIndices = getFuncIndex(expression);
     }
-    Parser(){
+    public Parser(){
         this("");
     }
     public static void main(String args[]) throws Exception{
-        Parser parser = new Parser("sin(cos(tan(4*6*(sec(8)))))");
-        parser.details();
-        parser.basicParse("-3.678*4+3.49/10-7^9");
+        ArrayList<Integer> ints = new ArrayList<>();
+        ints.add(1);
+        ints.add(3);
+        ints.add(2);
+        ints.add(3);
+        ints.add(5);
+        System.out.print(" Before: ");
+        for(int i = 0; i < ints.size(); i++)
+        System.out.print(ints.get(i) + " ");
+        System.out.println();
+        ints.remove(2);
+        // ints.set(3, 4);
+        System.out.print(" After: ");
+        for(int i = 0; i < ints.size(); i++)
+        System.out.print(ints.get(i) + " ");
+        System.out.println();
     }
 }
