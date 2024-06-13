@@ -1,6 +1,8 @@
 # Standard/Scientific Calculator with Java
 ## 1. app
+This package contains everything related to the GUI. Uses the parser package to evaluate expressions.
 ## 2. evaluator
+This package contains methods for evaluating different mathematical statements.
 ## 3. parser
 ### 1. Standardization
 ### the parser's basic operand is a `String`. it decodes the string to obtain functions, numbers, brackets and basic operations. 
