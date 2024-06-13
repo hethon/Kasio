@@ -101,8 +101,8 @@ public class App implements ActionListener {
         scientificPanel.add(new SymbolButton("asin"));
         scientificPanel.add(new SymbolButton("acos"));
         scientificPanel.add(new SymbolButton("atan"));
-        scientificPanel.add(new SymbolButton("%"));
-        scientificPanel.add(new SymbolButton("!")); //
+        scientificPanel.add(new SymbolButton("!"));
+        scientificPanel.add(new ExitButton()); //
 
         scientificPanel.add(new FuncButton("1/x", "1/"));
         scientificPanel.add(new SymbolButton("√"));

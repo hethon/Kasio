@@ -535,7 +535,8 @@ public class Parser{
     public Parser(){
         this("");
     }
-    public static void main(String args[]) throws Exception{
-        System.out.println(" final expression: " + Parser.fullParse("(3!*10)%"));
-    }
+    
+    // public static void main(String args[]) throws Exception{
+    //     System.out.println(" final expression: " + Parser.fullParse("(3!*10)%"));
+    // }
 }

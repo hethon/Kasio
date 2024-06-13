@@ -1,0 +1,21 @@
+# Ignore all class files
+*.class
+
+# Ignore specific directories (e.g., bin and build directories)
+bin/
+build/
+
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Ignore Eclipse project files
+.project
+.classpath
+.settings/
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
