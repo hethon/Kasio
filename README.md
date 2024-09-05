@@ -1,3 +1,8 @@
+## Standard/Scientific Calculator with Java
+
+![screenshot1](https://raw.githubusercontent.com/hethon/thecalc/84218e9555e958968d2158f4d6e36283691ad75d/screenshots/basicMode.png?token=GHSAT0AAAAAACTAPU7ULQIRATFZOTNIWP7MZWZL32A)
+![screenshot2](https://raw.githubusercontent.com/hethon/thecalc/master/screenshots/scientificMod.png?token=GHSAT0AAAAAACTAPU7VD2PZDCGWNJLRSPHGZWZMBIA)
+
 # How to run?
 
 ## Run the following command from the project's root directory'
@@ -5,8 +10,6 @@
 ## Then,
 `java app/App`
 
-
-# Standard/Scientific Calculator with Java
 ## 1. app
 This package contains everything related to the GUI. Uses the parser package to evaluate expressions.
 ## 2. evaluator
