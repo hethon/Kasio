@@ -1,14 +1,13 @@
-package app;
-
-import parser.Parser;
-
-import java.io.File;
+package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import kasio.App;
+import kasio.parser.Parser;
+
 public class EqualsButton extends JButton {
-    EqualsButton() {
+    public EqualsButton() {
         setText("=");
         setFont(Fonts.symbolFont);
         setFocusable(false);

@@ -1,10 +1,12 @@
-package app;
+package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import kasio.App;
+
 public class AllClearButton extends JButton {
-    AllClearButton() {
+    public AllClearButton() {
         setText("AC");
         setFont(Fonts.alphaFont);
         setFocusable(false);

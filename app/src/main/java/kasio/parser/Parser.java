@@ -1,6 +1,9 @@
-package parser;
+package kasio.parser;
+
 import java.util.ArrayList;
-import evaluator.Evaluator;
+
+import kasio.evaluator.Evaluator;
+
 public class Parser{
     public static final char[] BASIC_OPERATORS= {'!','%', '^', '/', '*', '+', '-'};
     private static final String[] FUNCTIONS = 

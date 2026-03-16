@@ -1,10 +1,12 @@
-package app;
+package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import kasio.App;
+
 public class SymbolButton extends JButton{
-    SymbolButton(String name) {
+    public SymbolButton(String name) {
         setText(name);  
         if (name.length() == 1) {
             setFont(Fonts.symbolFont);

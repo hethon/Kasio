@@ -1,10 +1,12 @@
-package app;
+package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-public class FuncButton extends JButton {
-    FuncButton(String name) {
+import kasio.App;
+
+public final class FuncButton extends JButton {
+    public FuncButton(String name) {
         setUp(name);
         addActionListener(e -> {
             App.textField.setText(
@@ -12,7 +14,7 @@ public class FuncButton extends JButton {
         });
     }
 
-    FuncButton(String name, String func) {
+    public FuncButton(String name, String func) {
         setUp(name);
         addActionListener(e -> {
             App.textField.setText(
@@ -20,7 +22,7 @@ public class FuncButton extends JButton {
         });
     }
 
-    FuncButton(String name, String func, String pos) {
+    public FuncButton(String name, String func, String pos) {
         setUp(name);
         addActionListener(e -> {
             App.textField.setText(

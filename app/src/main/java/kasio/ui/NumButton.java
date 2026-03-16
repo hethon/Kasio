@@ -1,10 +1,12 @@
-package app;
+package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import kasio.App;
+
 public class NumButton extends JButton {
-    NumButton(String name) {
+    public NumButton(String name) {
         setText(name);  
         setFont(Fonts.numFont);
         setFocusable(false);

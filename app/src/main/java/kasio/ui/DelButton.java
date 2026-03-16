@@ -1,10 +1,12 @@
-package app;
+package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import kasio.App;
+
 public class DelButton extends JButton{
-    DelButton() {
+    public DelButton() {
         setText("DEL");
         setFont(Fonts.alphaFont);
         setFocusable(false);

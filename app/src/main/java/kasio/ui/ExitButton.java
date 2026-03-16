@@ -1,10 +1,10 @@
-package app;
+package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class ExitButton extends JButton{
-    ExitButton() {
+    public ExitButton() {
         setText("Off");
         setFont(Fonts.alphaFont);
         setFocusable(false);

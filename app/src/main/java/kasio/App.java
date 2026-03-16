@@ -1,15 +1,40 @@
-package app;
+package kasio;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.KeyStroke;
+
+import kasio.ui.AllClearButton;
+import kasio.ui.Colors;
+import kasio.ui.DelButton;
+import kasio.ui.EqualsButton;
+import kasio.ui.ExitButton;
+import kasio.ui.Fonts;
+import kasio.ui.FuncButton;
+import kasio.ui.NumButton;
+import kasio.ui.SymbolButton;
 
 public class App implements ActionListener {
-    static JFrame frame;
-    static JTextField textField;
-    static JPanel scientificPanel;
-    static JPanel basicPanel;
+    public static JFrame frame;
+    public static JTextField textField;
+    public static JPanel scientificPanel;
+    public static JPanel basicPanel;
 
     final int contentWidth = 400;
     final int contentHeight = 660;
@@ -26,7 +51,9 @@ public class App implements ActionListener {
         frame.getContentPane().setPreferredSize(new Dimension(contentWidth, contentHeight));
         frame.setAlwaysOnTop(true);
         frame.setUndecorated(true);
-        frame.setIconImage(new ImageIcon("icon/icon.png").getImage());
+        frame.setIconImage(
+            new ImageIcon(getClass().getResource("/icon/icon.png")).getImage()
+        );
         
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(Colors.PRIMARY);

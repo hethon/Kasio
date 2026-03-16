@@ -1,7 +1,9 @@
-package app;
+package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+
+import kasio.App;
 
 public class ShiftButton extends JButton {
     ShiftButton() {
