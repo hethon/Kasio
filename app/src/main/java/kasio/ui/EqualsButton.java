@@ -2,12 +2,12 @@ package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
-import kasio.App;
 import kasio.parser.Parser;
 
 public class EqualsButton extends JButton {
-    public EqualsButton() {
+    public EqualsButton(JTextField display) {
         setText("=");
         setFont(Fonts.symbolFont);
         setFocusable(false);
@@ -15,7 +15,7 @@ public class EqualsButton extends JButton {
         setForeground(Colors.WHITE);
         setBorder(BorderFactory.createLineBorder(Colors.BLACK));
         addActionListener(e -> {
-            String text = App.textField.getText();
+            String text = display.getText();
             if (text.length() > 0) {
                 // System.out.println(text);
                 String modStr = text.replace("asin", "asi")
@@ -28,9 +28,9 @@ public class EqualsButton extends JButton {
                 
                 // System.out.println(modStr);
                 try {
-                    App.textField.setText(Parser.fullParse(modStr));
+                    display.setText(Parser.fullParse(modStr));
                 } catch (Exception err) {
-                    App.textField.setText("Syntax Error");
+                    display.setText("Syntax Error");
                 }
             }
         });

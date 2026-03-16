@@ -2,11 +2,10 @@ package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
-import kasio.App;
+import javax.swing.JTextField;
 
 public class NumButton extends JButton {
-    public NumButton(String name) {
+    public NumButton(String name, JTextField display) {
         setText(name);  
         setFont(Fonts.numFont);
         setFocusable(false);
@@ -14,7 +13,7 @@ public class NumButton extends JButton {
         setForeground(Colors.WHITE);
         setBorder(BorderFactory.createLineBorder(Colors.BLACK));
         addActionListener(e -> {
-            App.textField.setText(App.textField.getText() + name);
+            display.setText(display.getText() + name);
         });
     }
 }

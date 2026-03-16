@@ -2,11 +2,10 @@ package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
-import kasio.App;
+import javax.swing.JTextField;
 
 public class SymbolButton extends JButton{
-    public SymbolButton(String name) {
+    public SymbolButton(String name, JTextField display) {
         setText(name);  
         if (name.length() == 1) {
             setFont(Fonts.symbolFont);
@@ -18,7 +17,7 @@ public class SymbolButton extends JButton{
         setForeground(Colors.WHITE);
         setBorder(BorderFactory.createLineBorder(Colors.BLACK));
         addActionListener(e -> {
-            App.textField.setText(App.textField.getText() + name);
+            display.setText(display.getText() + name);
         });
     }
 }

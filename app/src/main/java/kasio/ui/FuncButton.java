@@ -2,31 +2,30 @@ package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
-import kasio.App;
+import javax.swing.JTextField;
 
 public final class FuncButton extends JButton {
-    public FuncButton(String name) {
+    public FuncButton(String name, JTextField display) {
         setUp(name);
         addActionListener(e -> {
-            App.textField.setText(
-                    String.format("%s(%s)", name, App.textField.getText()));
+            display.setText(
+                    String.format("%s(%s)", name, display.getText()));
         });
     }
 
-    public FuncButton(String name, String func) {
+    public FuncButton(String name, String func, JTextField display) {
         setUp(name);
         addActionListener(e -> {
-            App.textField.setText(
-                    String.format("%s(%s)", func, App.textField.getText()));
+            display.setText(
+                    String.format("%s(%s)", func, display.getText()));
         });
     }
 
-    public FuncButton(String name, String func, String pos) {
+    public FuncButton(String name, String func, String pos, JTextField display) {
         setUp(name);
         addActionListener(e -> {
-            App.textField.setText(
-                    String.format("(%s)%s", App.textField.getText(), func));
+            display.setText(
+                    String.format("(%s)%s", display.getText(), func));
         });
     }
 

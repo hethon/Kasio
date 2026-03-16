@@ -31,10 +31,10 @@ import kasio.ui.NumButton;
 import kasio.ui.SymbolButton;
 
 public class App implements ActionListener {
-    public static JFrame frame;
-    public static JTextField textField;
-    public static JPanel scientificPanel;
-    public static JPanel basicPanel;
+    private  JFrame frame;
+    private  final JTextField textField;
+    private  JPanel scientificPanel;
+    private  JPanel basicPanel;
 
     final int contentWidth = 400;
     final int contentHeight = 660;
@@ -125,26 +125,26 @@ public class App implements ActionListener {
         scientificPanel.setLayout(new GridLayout(3, 6, 10, 10));
         scientificPanel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Colors.SECONDARY));
 
-        scientificPanel.add(new FuncButton("x³", "∧3", "right"));
-        scientificPanel.add(new SymbolButton("asin"));
-        scientificPanel.add(new SymbolButton("acos"));
-        scientificPanel.add(new SymbolButton("atan"));
-        scientificPanel.add(new SymbolButton("!"));
+        scientificPanel.add(new FuncButton("x³", "∧3", "right", textField));
+        scientificPanel.add(new SymbolButton("asin", textField));
+        scientificPanel.add(new SymbolButton("acos", textField));
+        scientificPanel.add(new SymbolButton("atan", textField));
+        scientificPanel.add(new SymbolButton("!", textField));
         scientificPanel.add(new ExitButton()); //
 
-        scientificPanel.add(new FuncButton("1/x", "1/"));
-        scientificPanel.add(new SymbolButton("√"));
-        scientificPanel.add(new SymbolButton("log"));
-        scientificPanel.add(new SymbolButton("sin"));
-        scientificPanel.add(new SymbolButton("cos"));
-        scientificPanel.add(new SymbolButton("tan"));
+        scientificPanel.add(new FuncButton("1/x", "1/", textField));
+        scientificPanel.add(new SymbolButton("√", textField));
+        scientificPanel.add(new SymbolButton("log", textField));
+        scientificPanel.add(new SymbolButton("sin", textField));
+        scientificPanel.add(new SymbolButton("cos", textField));
+        scientificPanel.add(new SymbolButton("tan", textField));
 
-        scientificPanel.add(new FuncButton("±", "-"));
-        scientificPanel.add(new SymbolButton("abs"));
-        scientificPanel.add(new SymbolButton("ln"));
-        scientificPanel.add(new SymbolButton("(")); //
-        scientificPanel.add(new SymbolButton(")")); //
-        scientificPanel.add(new FuncButton("x²", "∧2", "right"));
+        scientificPanel.add(new FuncButton("±", "-", textField));
+        scientificPanel.add(new SymbolButton("abs", textField));
+        scientificPanel.add(new SymbolButton("ln", textField));
+        scientificPanel.add(new SymbolButton("(", textField)); //
+        scientificPanel.add(new SymbolButton(")", textField)); //
+        scientificPanel.add(new FuncButton("x²", "∧2", "right", textField));
 
         basicPanel = new JPanel();
         basicPanel.setBounds(0, textFieldHeight + scientificPanelHeight,
@@ -153,29 +153,29 @@ public class App implements ActionListener {
         basicPanel.setLayout(new GridLayout(4, 5, 10, 10));
         basicPanel.setBorder(BorderFactory.createMatteBorder(0, 10, 10, 10, Colors.SECONDARY));
 
-        basicPanel.add(new NumButton("7"));
-        basicPanel.add(new NumButton("8"));
-        basicPanel.add(new NumButton("9"));
-        basicPanel.add(new DelButton());
-        basicPanel.add(new AllClearButton());
+        basicPanel.add(new NumButton("7", textField));
+        basicPanel.add(new NumButton("8", textField));
+        basicPanel.add(new NumButton("9", textField));
+        basicPanel.add(new DelButton(textField));
+        basicPanel.add(new AllClearButton(textField));
 
-        basicPanel.add(new NumButton("4"));
-        basicPanel.add(new NumButton("5"));
-        basicPanel.add(new NumButton("6"));
-        basicPanel.add(new NumButton("×")); //
-        basicPanel.add(new NumButton("/")); //
+        basicPanel.add(new NumButton("4", textField));
+        basicPanel.add(new NumButton("5", textField));
+        basicPanel.add(new NumButton("6", textField));
+        basicPanel.add(new NumButton("×", textField)); //
+        basicPanel.add(new NumButton("/", textField)); //
 
-        basicPanel.add(new NumButton("1"));
-        basicPanel.add(new NumButton("2"));
-        basicPanel.add(new NumButton("3"));
-        basicPanel.add(new NumButton("+")); //
-        basicPanel.add(new NumButton("-")); //
+        basicPanel.add(new NumButton("1", textField));
+        basicPanel.add(new NumButton("2", textField));
+        basicPanel.add(new NumButton("3", textField));
+        basicPanel.add(new NumButton("+", textField)); //
+        basicPanel.add(new NumButton("-", textField)); //
 
-        basicPanel.add(new NumButton("0"));
-        basicPanel.add(new NumButton("."));
-        basicPanel.add(new NumButton("π"));
-        basicPanel.add(new EqualsButton());
-        basicPanel.add(new NumButton("∧"));
+        basicPanel.add(new NumButton("0", textField));
+        basicPanel.add(new NumButton(".", textField));
+        basicPanel.add(new NumButton("π", textField));
+        basicPanel.add(new EqualsButton(textField));
+        basicPanel.add(new NumButton("∧", textField));
 
         frame.setJMenuBar(menuBar);
         frame.add(textField);

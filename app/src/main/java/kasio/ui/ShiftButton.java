@@ -2,11 +2,10 @@ package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
-import kasio.App;
+import javax.swing.JTextField;
 
 public class ShiftButton extends JButton {
-    ShiftButton() {
+    ShiftButton(JTextField display) {
         String shiftIcon = "⇧";
         setText(shiftIcon);  
         setFont(Fonts.numFont);
@@ -15,7 +14,7 @@ public class ShiftButton extends JButton {
         setForeground(Colors.WHITE);
         setBorder(BorderFactory.createLineBorder(Colors.BLACK));
         addActionListener(e -> {
-            App.textField.setText("sh");
+            display.setText("sh");
         });
     }
 }

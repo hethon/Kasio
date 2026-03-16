@@ -2,11 +2,10 @@ package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
-import kasio.App;
+import javax.swing.JTextField;
 
 public class AllClearButton extends JButton {
-    public AllClearButton() {
+    public AllClearButton(JTextField display) {
         setText("AC");
         setFont(Fonts.alphaFont);
         setFocusable(false);
@@ -14,7 +13,7 @@ public class AllClearButton extends JButton {
         setForeground(Colors.WHITE);
         setBorder(BorderFactory.createLineBorder(Colors.BLACK));
         addActionListener(e -> {
-            App.textField.setText("");
+            display.setText("");
         });
     }
 }

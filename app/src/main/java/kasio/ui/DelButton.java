@@ -2,11 +2,10 @@ package kasio.ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
-import kasio.App;
+import javax.swing.JTextField;
 
 public class DelButton extends JButton{
-    public DelButton() {
+    public DelButton(JTextField display) {
         setText("DEL");
         setFont(Fonts.alphaFont);
         setFocusable(false);
@@ -14,9 +13,9 @@ public class DelButton extends JButton{
         setForeground(Colors.WHITE);
         setBorder(BorderFactory.createLineBorder(Colors.BLACK));
         addActionListener(e -> {
-            String text = App.textField.getText();
+            String text = display.getText();
             if (text.length() > 0) {
-                App.textField.setText(text.substring(0, text.length() - 1));
+                display.setText(text.substring(0, text.length() - 1));
             }
         });
     }
