@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'kasio.App'
+    mainClass = 'kasio.Main'
 }
 
 tasks.named('test') {

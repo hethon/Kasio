@@ -1,8 +1,7 @@
-package kasio.evaluator;
+package kasio.model;
 
 import java.util.ArrayList;
 
-import kasio.parser.Parser;
 public class Evaluator{
     public static Integer fact(Integer n){
         return (n == 0 ? 1 : n * fact(n - 1));

@@ -1,4 +1,4 @@
-package kasio.ui;
+package kasio.view.components;
 
 import java.awt.Color;
 
