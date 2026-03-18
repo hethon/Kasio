@@ -44,7 +44,7 @@ public class CalculatorView {
 
     private  final JTextField textField;
     private final List<AppendButton> appendButtons = Arrays.asList(
-        new AppendButton("x³", "∧3"),
+        new AppendButton("x³", "^3"),
         new AppendButton("asin"),
         new AppendButton("acos"),
         new AppendButton("atan"),
@@ -59,7 +59,7 @@ public class CalculatorView {
         new AppendButton("ln"),
         new AppendButton("("),
         new AppendButton(")"),
-        new AppendButton("x²", "∧2"),
+        new AppendButton("x²", "^2"),
         new AppendButton("7"),
         new AppendButton("8"),
         new AppendButton("9"),
@@ -76,7 +76,7 @@ public class CalculatorView {
         new AppendButton("0"),
         new AppendButton("."),
         new AppendButton("π"),
-        new AppendButton("∧")
+        new AppendButton("^")
     );
 
     private final List<WrapButton> wrapButtons = Arrays.asList(
