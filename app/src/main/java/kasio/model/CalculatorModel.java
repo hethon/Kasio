@@ -3,6 +3,7 @@ package kasio.model;
 import org.mariuszgromada.math.mxparser.Expression;
 
 public class CalculatorModel {
+    private boolean inErrorState = false;
     private String expressionBuilder;
     
     public CalculatorModel() {
@@ -10,20 +11,32 @@ public class CalculatorModel {
     }
 
     public void appendInput(String value) {
+        if (this.inErrorState) {
+            this.clear();
+        }
         this.expressionBuilder += value;
     }
 
     public void wrapCurrentExpression(String prefix) {
+        if (this.inErrorState) {
+            this.clear();
+            return;
+        }
         this.expressionBuilder = String.format("%s(%s)", prefix, this.expressionBuilder);
     }
 
     public void deleteLast() {
-        if (this.expressionBuilder.length() == 0) return;
+        if (this.inErrorState) {
+            this.clear();
+            return;
+        }
+        if (this.expressionBuilder.isEmpty()) return;
         this.expressionBuilder = this.expressionBuilder.substring(0, this.expressionBuilder.length() - 1);
     }
     
     public void clear() {
         this.expressionBuilder = "";
+        this.inErrorState = false;
     }
 
     public String getCurrentExpression() {
@@ -31,7 +44,8 @@ public class CalculatorModel {
     }
 
     public void evaluate() {
-        if (this.expressionBuilder.length() == 0) return;
+        if (this.expressionBuilder.isEmpty()) return;
+        if (this.inErrorState) return;
 
         Expression e = new Expression(this.expressionBuilder);
         
@@ -39,6 +53,7 @@ public class CalculatorModel {
 
         if (Double.isNaN(result)) {
             this.expressionBuilder = "Syntax Error";
+            this.inErrorState = true;
         } else {
             String resultStr = String.valueOf(result);
             
