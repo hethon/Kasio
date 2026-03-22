@@ -176,6 +176,7 @@ public class CalculatorView {
         mode.add(scientificMode);
         
         textField = new JTextField();
+        textField.setHorizontalAlignment(JTextField.RIGHT);
         textField.setBounds(0, 0, contentWidth, textFieldHeight);
         textField.setEditable(false);
         textField.setBackground(Colors.RETRO);
