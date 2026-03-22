@@ -2,6 +2,7 @@ package kasio.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -34,6 +35,7 @@ public class CalculatorView {
     private  JFrame frame;
     private  JPanel scientificPanel;
     private  JPanel basicPanel;
+    private final JButton off_menu;
 
     final int contentWidth = 400;
     final int contentHeight = 660;
@@ -135,7 +137,22 @@ public class CalculatorView {
         minimize.setFocusable(false);
         minimize.setContentAreaFilled(false);
         minimize.addActionListener(e -> {frame.setExtendedState(JFrame.ICONIFIED);});
-        menuBar.add(minimize, BorderLayout.EAST);
+
+        off_menu = new JButton("✕");
+        off_menu.setFont(Fonts.alphaFont);
+        off_menu.setForeground(Colors.WHITE);
+        off_menu.setBorderPainted(false);
+        off_menu.setFocusable(false);
+        off_menu.setContentAreaFilled(false);
+
+        JPanel eastPanel = new JPanel();
+        eastPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        eastPanel.setOpaque(false); // optional if you want transparency
+
+        eastPanel.add(minimize);
+        eastPanel.add(off_menu);
+
+        menuBar.add(eastPanel, BorderLayout.EAST);
         
         JMenuItem basicMode = new JMenuItem("Basic");
         basicMode.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.CTRL_DOWN_MASK));
@@ -273,6 +290,9 @@ public class CalculatorView {
 
     public void addExitButtonListener(Runnable action) {
         exisButton.addActionListener(e -> {
+            action.run();
+        });
+        off_menu.addActionListener(e -> {
             action.run();
         });
     }
