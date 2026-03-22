@@ -66,13 +66,6 @@ public class CalculatorView {
         panel.add(btn);
     }
 
-    private void addWrapBtn(JPanel panel, String text) {
-        WrapButton btn = new WrapButton(text);
-        wrapButtons.add(btn);
-        panel.add(btn);
-    }
-
-
     public CalculatorView() {
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -171,24 +164,24 @@ public class CalculatorView {
         scientificPanel.setLayout(new GridLayout(3, 6, 10, 10));
         scientificPanel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Colors.SECONDARY));
 
-        addAppendBtn(scientificPanel, "x³", "∧3");
-        addAppendBtn(scientificPanel, "asin");
-        addAppendBtn(scientificPanel, "acos");
-        addAppendBtn(scientificPanel, "atan");
-        addAppendBtn(scientificPanel, "!");
-
-        addWrapBtn(scientificPanel, "1/x", "1/");
-        addAppendBtn(scientificPanel, "√");
-        addAppendBtn(scientificPanel, "log");
         addAppendBtn(scientificPanel, "sin");
         addAppendBtn(scientificPanel, "cos");
         addAppendBtn(scientificPanel, "tan");
+        addAppendBtn(scientificPanel, "asin");
+        addAppendBtn(scientificPanel, "acos");
+        addAppendBtn(scientificPanel, "atan");
 
-        addWrapBtn(scientificPanel, "-(X)", "-");
-        addWrapBtn(scientificPanel, "()");
-        addAppendBtn(scientificPanel, "tan");
-        addAppendBtn(scientificPanel, "abs");
+        addAppendBtn(scientificPanel, "x²", "∧2");
+        addAppendBtn(scientificPanel, "xʸ", "∧");
+        addAppendBtn(scientificPanel, "√");
+        addAppendBtn(scientificPanel, "!");
+        addAppendBtn(scientificPanel, "log");
         addAppendBtn(scientificPanel, "ln");
+
+        addWrapBtn(scientificPanel, "1/x", "1/");
+        addWrapBtn(scientificPanel, "(x)", "");
+        addAppendBtn(scientificPanel, "e");
+        addWrapBtn(scientificPanel, "±", "-");
         addAppendBtn(scientificPanel, "(");
         addAppendBtn(scientificPanel, ")");
 
@@ -199,29 +192,29 @@ public class CalculatorView {
         basicPanel.setLayout(new GridLayout(4, 5, 10, 10));
         basicPanel.setBorder(BorderFactory.createMatteBorder(0, 10, 10, 10, Colors.SECONDARY));
 
-        addAppendBtn(basicPanel, "x²", "∧2");
         addAppendBtn(basicPanel, "7");
         addAppendBtn(basicPanel, "8");
+        addAppendBtn(basicPanel, "9");
         basicPanel.add(delButton);
         basicPanel.add(allClearButton);
 
-        addAppendBtn(basicPanel, "9");
         addAppendBtn(basicPanel, "4");
         addAppendBtn(basicPanel, "5");
         addAppendBtn(basicPanel, "6");
         addAppendBtn(basicPanel, "×");
-
         addAppendBtn(basicPanel, "÷");
+        
         addAppendBtn(basicPanel, "1");
         addAppendBtn(basicPanel, "2");
         addAppendBtn(basicPanel, "3");
         addAppendBtn(basicPanel, "+");
-
         addAppendBtn(basicPanel, "-");
+
         addAppendBtn(basicPanel, "0");
         addAppendBtn(basicPanel, ".");
         addAppendBtn(basicPanel, "π");
-        addAppendBtn(basicPanel, "∧");
+        addAppendBtn(basicPanel, "EXP", "*10∧");
+        basicPanel.add(equalsButton);
 
         frame.setJMenuBar(menuBar);
         frame.add(textField);
