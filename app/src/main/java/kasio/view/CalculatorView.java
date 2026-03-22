@@ -28,7 +28,6 @@ import kasio.view.components.buttons.AllClearButton;
 import kasio.view.components.buttons.AppendButton;
 import kasio.view.components.buttons.DelButton;
 import kasio.view.components.buttons.EqualsButton;
-import kasio.view.components.buttons.ExitButton;
 import kasio.view.components.buttons.WrapButton;
 
 public class CalculatorView {
@@ -50,7 +49,6 @@ public class CalculatorView {
     private final AllClearButton allClearButton = new AllClearButton();
     private final DelButton delButton = new DelButton();
     private final EqualsButton equalsButton = new EqualsButton();
-    private final ExitButton exisButton = new ExitButton();
 
     private void addAppendBtn(JPanel panel, String text) {
         addAppendBtn(panel, text, text);
@@ -178,7 +176,6 @@ public class CalculatorView {
         addAppendBtn(scientificPanel, "acos");
         addAppendBtn(scientificPanel, "atan");
         addAppendBtn(scientificPanel, "!");
-        scientificPanel.add(exisButton);
 
         addWrapBtn(scientificPanel, "1/x", "1/");
         addAppendBtn(scientificPanel, "√");
@@ -273,9 +270,6 @@ public class CalculatorView {
     }
 
     public void addExitButtonListener(Runnable action) {
-        exisButton.addActionListener(e -> {
-            action.run();
-        });
         off_menu.addActionListener(e -> {
             action.run();
         });
