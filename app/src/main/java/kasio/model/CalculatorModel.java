@@ -55,6 +55,8 @@ public class CalculatorModel {
 
         Expression e = new Expression(
             this.expressionBuilder
+            // the display font we used doesn't support ^ 
+            // as a work around we used ∧, but replaced it with the correct one before parsing.
             .replace("∧", "^")
         );
         
