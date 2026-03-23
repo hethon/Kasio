@@ -32,6 +32,10 @@ java {
     }
 }
 
+tasks.withType(JavaCompile).configureEach {
+    options.release.set(17) 
+}
+
 application {
     // Define the main class for the application.
     mainClass = 'kasio.Main'
