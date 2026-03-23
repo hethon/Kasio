@@ -58,6 +58,8 @@ public class CalculatorModel {
             // the display font we used doesn't support ^ 
             // as a work around we used ∧, but replaced it with the correct one before parsing.
             .replace("∧", "^")
+            // mXparser expects log10
+            .replace("log", "log10")
         );
         
         double result = e.calculate();
