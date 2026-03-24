@@ -17,7 +17,8 @@ During the development process, I learned and implemented:
 I am continuing to use this project as a hands-on way to learn new software engineering concepts. Upcoming goals include:
 - [x] Adding unit tests (JUnit).
 - [x] Setting up CI/CD pipelines.
-- [x] Automatic releases.
+- [x] Tag-triggered release workflow.
+- [ ] Automated semantic versioning.
 
 ### How to Run
 You don't need Gradle installed globally. Just use the included wrapper:
