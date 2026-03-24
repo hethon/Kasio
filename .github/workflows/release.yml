@@ -25,6 +25,22 @@ jobs:
 
     - name: Make gradlew executable
       run: chmod +x ./gradlew
+    
+    - name: Verify Version Matches Git Tag
+      run: |
+        TAG_VERSION=${GITHUB_REF_NAME#v}
+        GRADLE_VERSION=$(./gradlew properties -q | grep "^version:" | awk '{print $2}')
+        
+        echo "Pushed Git Tag: $TAG_VERSION"
+        echo "build.gradle Version: $GRADLE_VERSION"
+        
+        if [ "$TAG_VERSION" != "$GRADLE_VERSION" ]; then
+          echo "❌ ERROR: Version mismatch!"
+          echo "You pushed tag v$TAG_VERSION, but build.gradle says $GRADLE_VERSION."
+          echo "Please update build.gradle, push the commit, and re-tag."
+          exit 1
+        fi
+        echo "✅ Versions match. Proceeding with release..."
 
     - name: Build Standalone JAR
       run: ./gradlew fatJar
