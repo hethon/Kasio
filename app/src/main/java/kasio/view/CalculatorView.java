@@ -156,7 +156,10 @@ public class CalculatorView {
         textField.setBounds(0, 0, contentWidth, textFieldHeight);
         textField.setEditable(false);
         textField.setBackground(Colors.RETRO);
-        textField.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Colors.SECONDARY));
+        textField.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createMatteBorder(10, 10, 10, 10, Colors.SECONDARY),
+            BorderFactory.createEmptyBorder(5, 10, 5, 10,) // padding
+        ));
         textField.setFont(Fonts.displayFont);
         
         scientificPanel = new JPanel();
