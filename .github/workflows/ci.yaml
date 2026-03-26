@@ -40,6 +40,9 @@ jobs:
 
     - name: Make gradlew executable
       run: chmod +x ./gradlew
+    
+    - name: Run Spotless (format check)
+      run: ./gradlew spotlessCheck
 
     - name: Build and run tests with Gradle
       run: ./gradlew build
