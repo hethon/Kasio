@@ -24,7 +24,6 @@ public class CalculatorController {
             view.setDisplayValue(model.getCurrentExpression());
         });
 
-        // --- Listeners for Buttons with Unique Actions ---
         view.addAllClearButtonListener(() -> {
             model.clear();
             view.setDisplayValue(model.getCurrentExpression());

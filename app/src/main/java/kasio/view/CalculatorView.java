@@ -60,8 +60,8 @@ public class CalculatorView {
 
     private void addAppendBtn(JPanel panel, String displayText, String evalText, Font font) {
         AppendButton btn = new AppendButton(displayText, evalText, font);
-        appendButtons.add(btn); // Save it so Controller can attach listeners later
-        panel.add(btn);         // Add it to the UI
+        appendButtons.add(btn);
+        panel.add(btn);
     }
 
     private void addWrapBtn(JPanel panel, String text, String wrapPrefix, Font font) {
@@ -125,8 +125,7 @@ public class CalculatorView {
 
         JPanel eastPanel = new JPanel();
         eastPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-        eastPanel.setOpaque(false); // optional if you want transparency
-
+        eastPanel.setOpaque(false);
         eastPanel.add(minimize);
         eastPanel.add(off_menu);
 
@@ -238,7 +237,7 @@ public class CalculatorView {
     public void addAppendButtonListener(Consumer<String> action) {
         for (AppendButton button : this.appendButtons) {
             button.addActionListener(e -> {
-                action.accept(button.getEvalText());
+                action.accept(button.getInputText());
             });
         }
     }
@@ -246,7 +245,7 @@ public class CalculatorView {
     public void addWrapButtonListener(Consumer<String> action) {
         for (WrapButton button : this.wrapButtons) {
             button.addActionListener(e -> {
-                action.accept(button.getWrapPrefix());
+                action.accept(button.getPrefix());
             });
         }
     }

@@ -10,17 +10,17 @@ import kasio.view.components.Colors;
 
 public final class WrapButton extends JButton {
 
-    private final String wrapPrefix;
+    private final String prefix;
 
-    public WrapButton(String text, String wrapPrefix, Font font) {
-        super(text);
-        this.wrapPrefix = wrapPrefix;
+    public WrapButton(String keypadText, String prefix, Font font) {
+        super(keypadText);
+        this.prefix = prefix;
         setUp(font);
     }
 
-    public WrapButton(String name, Font font) {
-        super(name);
-        this.wrapPrefix = "";
+    public WrapButton(String keypadText, Font font) {
+        super(keypadText);
+        this.prefix = "";
         setUp(font);
     }
 
@@ -32,7 +32,7 @@ public final class WrapButton extends JButton {
         setBorder(BorderFactory.createLineBorder(Colors.BLACK));
     }
 
-    public String getWrapPrefix() {
-        return this.wrapPrefix;
+    public String getPrefix() {
+        return this.prefix;
     }
 }
