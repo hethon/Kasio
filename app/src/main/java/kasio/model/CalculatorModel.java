@@ -1,6 +1,7 @@
 package kasio.model;
 
 import org.mariuszgromada.math.mxparser.Expression;
+import org.mariuszgromada.math.mxparser.License;
 
 public class CalculatorModel {
     private boolean inErrorState = false;
@@ -8,6 +9,8 @@ public class CalculatorModel {
     private String expressionResult;
     
     public CalculatorModel() {
+        License.iConfirmNonCommercialUse("Kasio Project Student");
+
         this.expressionBuilder = "";
         this.expressionResult = "";
     }
