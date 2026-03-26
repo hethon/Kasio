@@ -60,6 +60,8 @@ public class CalculatorModel {
             .replace("∧", "^")
             // mXparser expects log10
             .replace("log", "log10")
+            // TAN -> tan, SIN -> sin, etc
+            .toLowerCase()
         );
         
         double result = e.calculate();
