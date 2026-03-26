@@ -178,8 +178,8 @@ public class CalculatorView {
         addAppendBtn(scientificPanel, "ACOS", "ACOS(", Fonts.KEYPAD_SECONDARY);
         addAppendBtn(scientificPanel, "ATAN", "ATAN(", Fonts.KEYPAD_SECONDARY);
 
-        addAppendBtn(scientificPanel, "x²", "∧2", Fonts.KEYPAD_SECONDARY);
-        addAppendBtn(scientificPanel, "xʸ", "∧", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "<html>X<sup>2</sup></html>", "∧2", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "<html>X<sup>Y</sup></html>", "∧", Fonts.KEYPAD_SECONDARY);
         addAppendBtn(scientificPanel, "√", Fonts.KEYPAD_SECONDARY);
         addAppendBtn(scientificPanel, "!", Fonts.KEYPAD_SECONDARY);
         addAppendBtn(scientificPanel, "LOG", "LOG(", Fonts.KEYPAD_SECONDARY);
