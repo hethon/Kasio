@@ -6,7 +6,6 @@ package kasio;
 import org.junit.jupiter.api.Test;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        
-    }
+  @Test
+  void appHasAGreeting() {}
 }
