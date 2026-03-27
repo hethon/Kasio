@@ -6,11 +6,11 @@
 
 
 
-Kasio is a Java Swing calculator app built for a university assignment, featuring a retro design inspired by classic scientific calculators. 
+Kasio is a Java Swing calculator app built for a university assignment, featuring a retro design inspired by classic scientific calculators.
 
 ![Screenshot](screenshots/image.png)
 
-Swing wasn’t a deliberate tech choice, it was required by the course, but I used the project to go beyond that constraint and explore better software practices. The true focus of this repository is learning tooling and architecture. 
+Swing wasn’t a deliberate tech choice, it was required by the course, but I used the project to go beyond that constraint and explore better software practices. The true focus of this repository is learning tooling and architecture.
 
 During the development process, I learned and implemented:
 * **Gradle:** Migrated the project to a standard build system instead of relying on IDE tooling.
