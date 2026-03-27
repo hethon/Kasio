@@ -1,0 +1,40 @@
+default_install_hook_types:
+  - pre-commit
+  - pre-push
+
+default_stages:
+  - pre-commit
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+        stages:
+          - pre-commit
+      - id: trailing-whitespace
+        stages:
+          - pre-commit
+
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.11
+    hooks:
+      - id: actionlint
+        name: Lint GitHub Actions workflow files
+
+  - repo: local
+    hooks:
+      - id: spotless-apply
+        name: Format code
+        entry: ./gradlew spotlessApply
+        language: system
+        pass_filenames: false
+
+      - id: run-tests
+        name: Run tests
+        entry: ./gradlew build
+        language: system
+        pass_filenames: false
+        stages:
+          - pre-push
