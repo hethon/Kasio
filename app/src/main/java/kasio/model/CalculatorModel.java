@@ -75,7 +75,7 @@ public class CalculatorModel {
     double result = e.calculate();
 
     if (Double.isNaN(result)) {
-      this.expressionBuilder = "Syntax Error";
+      this.expressionBuilder = "SYNTAX ERROR";
       this.inErrorState = true;
     } else {
       String resultStr = String.valueOf(result);

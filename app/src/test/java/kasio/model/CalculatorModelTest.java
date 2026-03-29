@@ -76,7 +76,7 @@ class CalculatorModelTest {
     model.appendInput("+");
     model.evaluate();
 
-    assertEquals("Syntax Error", model.getCurrentExpression());
+    assertEquals("SYNTAX ERROR", model.getCurrentExpression());
     assertTrue(model.isInErrorState());
   }
 
