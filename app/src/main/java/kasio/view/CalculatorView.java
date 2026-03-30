@@ -3,8 +3,6 @@ package kasio.view;
 import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
@@ -23,7 +21,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.text.AbstractDocument;
@@ -39,11 +36,13 @@ import kasio.view.components.buttons.AppendButton;
 import kasio.view.components.buttons.DelButton;
 import kasio.view.components.buttons.EqualsButton;
 import kasio.view.components.buttons.WrapButton;
+import kasio.view.components.panels.BasicKeypadPanel;
+import kasio.view.components.panels.ScientificKeypadPanel;
 
 public class CalculatorView {
   private JFrame frame;
-  private JPanel scientificPanel;
-  private JPanel basicPanel;
+  private ScientificKeypadPanel scientificPanel;
+  private BasicKeypadPanel basicPanel;
   private MenuItem trayExitItem;
 
   final int contentWidth = 400;
@@ -56,28 +55,12 @@ public class CalculatorView {
   private final JTextField textField;
   private final List<AppendButton> appendButtons = new ArrayList<>();
   private final List<WrapButton> wrapButtons = new ArrayList<>();
-  private final AllClearButton allClearButton = new AllClearButton(Fonts.KEYPAD_PRIMARY);
-  private final DelButton delButton = new DelButton(Fonts.KEYPAD_PRIMARY);
-  private final EqualsButton equalsButton = new EqualsButton(Fonts.KEYPAD_PRIMARY);
-  private final AnsButton ansButton = new AnsButton(Fonts.KEYPAD_PRIMARY);
+  private final AllClearButton allClearButton;
+  private final DelButton delButton;
+  private final EqualsButton equalsButton;
+  private final AnsButton ansButton;
 
   private boolean allowProgrammaticEdit = false;
-
-  private void addAppendBtn(JPanel panel, String text, Font font) {
-    addAppendBtn(panel, text, text, font);
-  }
-
-  private void addAppendBtn(JPanel panel, String displayText, String evalText, Font font) {
-    AppendButton btn = new AppendButton(displayText, evalText, font);
-    appendButtons.add(btn);
-    panel.add(btn);
-  }
-
-  private void addWrapBtn(JPanel panel, String text, String wrapPrefix, Font font) {
-    WrapButton btn = new WrapButton(text, wrapPrefix, font);
-    wrapButtons.add(btn);
-    panel.add(btn);
-  }
 
   public CalculatorView() {
     frame = new JFrame("Calculator");
@@ -202,63 +185,21 @@ public class CalculatorView {
     textField.setCaret(new RetroCaret());
     textField.requestFocusInWindow();
 
-    scientificPanel = new JPanel();
+    scientificPanel = new ScientificKeypadPanel();
     scientificPanel.setBounds(0, textFieldHeight, contentWidth, scientificPanelHeight);
-    scientificPanel.setBackground(Colors.SECONDARY);
-    scientificPanel.setLayout(new GridLayout(3, 6, 10, 10));
-    scientificPanel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Colors.SECONDARY));
-
-    addAppendBtn(scientificPanel, "SIN", "SIN(", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "COS", "COS(", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "TAN", "TAN(", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "ASIN", "ASIN(", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "ACOS", "ACOS(", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "ATAN", "ATAN(", Fonts.KEYPAD_SECONDARY);
-
-    addAppendBtn(scientificPanel, "<html>X<sup>2</sup></html>", "∧2", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "<html>X<sup>Y</sup></html>", "∧", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "√", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "!", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "LOG", "LOG(", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "LN", "LN(", Fonts.KEYPAD_SECONDARY);
-
-    addWrapBtn(scientificPanel, "1/x", "1/", Fonts.KEYPAD_SECONDARY);
-    addWrapBtn(scientificPanel, "(x)", "", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "e", Fonts.KEYPAD_SECONDARY);
-    addWrapBtn(scientificPanel, "±", "-", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, "(", Fonts.KEYPAD_SECONDARY);
-    addAppendBtn(scientificPanel, ")", Fonts.KEYPAD_SECONDARY);
-
-    basicPanel = new JPanel();
+    basicPanel = new BasicKeypadPanel();
     basicPanel.setBounds(
         0, textFieldHeight + scientificPanelHeight, contentWidth, basicPanelHeight);
-    basicPanel.setBackground(Colors.SECONDARY);
-    basicPanel.setLayout(new GridLayout(4, 5, 10, 10));
-    basicPanel.setBorder(BorderFactory.createMatteBorder(0, 10, 10, 10, Colors.SECONDARY));
 
-    addAppendBtn(basicPanel, "7", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "8", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "9", Fonts.KEYPAD_PRIMARY);
-    basicPanel.add(delButton);
-    basicPanel.add(allClearButton);
+    appendButtons.addAll(scientificPanel.getAppendButtons());
+    appendButtons.addAll(basicPanel.getAppendButtons());
+    wrapButtons.addAll(scientificPanel.getWrapButtons());
+    wrapButtons.addAll(basicPanel.getWrapButtons());
 
-    addAppendBtn(basicPanel, "4", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "5", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "6", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "×", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "÷", Fonts.KEYPAD_PRIMARY);
-
-    addAppendBtn(basicPanel, "1", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "2", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "3", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "+", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "-", Fonts.KEYPAD_PRIMARY);
-
-    addAppendBtn(basicPanel, "0", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, ".", Fonts.KEYPAD_PRIMARY);
-    addAppendBtn(basicPanel, "π", Fonts.KEYPAD_PRIMARY);
-    basicPanel.add(ansButton);
-    basicPanel.add(equalsButton);
+    allClearButton = basicPanel.getAllClearButton();
+    delButton = basicPanel.getDelButton();
+    equalsButton = basicPanel.getEqualsButton();
+    ansButton = basicPanel.getAnsButton();
 
     frame.setJMenuBar(menuBar);
     frame.add(textField);
