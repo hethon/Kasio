@@ -3,6 +3,7 @@ package kasio.view;
 import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
@@ -21,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.text.AbstractDocument;
@@ -101,6 +103,10 @@ public class CalculatorView {
     mode.setForeground(Colors.WHITE);
     menuBar.add(mode, BorderLayout.WEST);
 
+    JPanel controls = new JPanel();
+    controls.setOpaque(false);
+    controls.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
     JButton minimize = new JButton("—");
     minimize.setFont(Fonts.KEYPAD_PRIMARY);
     minimize.setForeground(Colors.WHITE);
@@ -111,7 +117,21 @@ public class CalculatorView {
         e -> {
           frame.setVisible(false);
         });
-    menuBar.add(minimize, BorderLayout.EAST);
+    controls.add(minimize);
+
+    JButton close = new JButton("X");
+    close.setFont(Fonts.KEYPAD_PRIMARY);
+    close.setForeground(Colors.WHITE);
+    close.setBorderPainted(false);
+    close.setFocusable(false);
+    close.setContentAreaFilled(false);
+    close.addActionListener(
+        e -> {
+          System.exit(0);
+        });
+    controls.add(close);
+
+    menuBar.add(controls, BorderLayout.EAST);
 
     JMenuItem basicMode = new JMenuItem("Basic");
     basicMode.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.CTRL_DOWN_MASK));
