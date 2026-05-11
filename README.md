@@ -14,7 +14,7 @@ Kasio is a Java Swing calculator app featuring a retro design inspired by classi
 
 This project started as a university group assignment back in 2024. I built the UI, a friend built the math parser, and after a frantic week, we slapped it together and submitted it. The final state of that old project can be seen [here](https://github.com/hethon/Kasio/tree/ce3384dd5f55cd2168947e603e0078f97d5eb574). It worked (mostly), but the code was messy and buggy.
 
-Fast forward to 2026. I was on a completely different quest: trying to build an Android app *manually* from the command line, just to see if I could. After endless terminal commands, I ended up with a signed APK and a messy Python script called `build.py` to automate the steps. I had a vague sense of what build tools were for, but it was all still a black box.
+Fast forward to 2026. I was on a completely different quest: [trying to build an Android app *manually* from the command line](https://github.com/hethon/atfs), just to see if I could. After endless terminal commands, I ended up with a signed APK and a messy Python script called `build.py` to automate the steps. I had a vague sense of what build tools were for, but it was all still a black box.
 
 Then I opened Android Studio for the first time and was hit by a wall named **Gradle**. It felt slow, magical, and I had no idea what it was doing. I realized the only way to understand this "magic" was to tame it myself on a project I already knew. That old, buggy calculator project was the perfect test subject.
 
